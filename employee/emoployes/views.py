@@ -33,7 +33,7 @@ def add_emp(request):
     elif request.method=='GET':
         return render(request, 'add_emp.html')
     else:
-        return HttpResponse("An Exception Occured! Employee Has Not Been Added")
+        return HttpResponse("Employee Has Not Added")
 
 
 def remove_emp(request, emp_id = 0):
@@ -41,9 +41,9 @@ def remove_emp(request, emp_id = 0):
         try:
             emp_to_be_removed = Employee.objects.get(id=emp_id)
             emp_to_be_removed.delete()
-            return HttpResponse("Employee Removed Successfully")
+            return HttpResponse("Employee Removed ")
         except:
-            return HttpResponse("Please Enter A Valid EMP ID")
+            return HttpResponse("Please Enter valid Id")
     emps = Employee.objects.all()
     context = {
         'emps': emps
